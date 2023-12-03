@@ -73,4 +73,4 @@ print(csv)
 ```
 
 # Links
-- [Github](https://github.com/flowa)
+- [Github](https://github.com/flowa-ai)
