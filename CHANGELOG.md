@@ -1,69 +1,55 @@
-<div id="header">
-  <img src="https://i.ibb.co/p049Y5S/86964862.png" width="50"/>   <img src="https://i.ibb.co/r6JZ336/sketch1700556567238.png" width="250">
-</div>
+<a href="https://ibb.co/885w17s](https://i.ibb.co/bdBVcKm/flowa.jpg)"><img src="https://i.ibb.co/bdBVcKm/flowa.jpg" alt="flowa" border="0" width="145"></a>
 
-# [pollinations.ai - Image Generation](https://pypi.org/project/pollinations.ai)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/toolkitr/tkr/blob/main/LICENSE)
+# [flowa - Decision Trees & Label Encoding](https://pypi.org/project/flowa)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/flowa/flowa/blob/main/LICENSE)
 [![Python Versions](https://img.shields.io/badge/python-3.7%20|%203.8%20|%203.9%20|%203.10%20|%203.11%20|%203.12%20-blue)](https://www.python.org/downloads/)
 
 ```
-pollinations.ai: (https://pollinations.ai/)
+flowa: (V1.1.5)
 
-This is a WRAPPER designed for easy text-image generation.
+Python Machine Learning, Decision Trees, and Label Encoders.
 ```
-
-# CHANGELOG V0.2.3
-```diff
-+ Formatted and added docstrings to all files, classes, and methods.
-```
-### FIXED
-```python
-pollinations.types.ImageModel.filter: default_filter not defined, set to self.default_filter.
-```
-
-# CHANGELOG V0.2.1
 
 ## Installing
 ```shell
 # Linux/macOS
-python3 -m pip install -U pollinations.ai
+python3 pip install -U flowa
 
 # Windows
-py -3 -m pip install -U pollinations.ai
+py -3 -m pip install -U flowa
 ```
 
-V0.2.1 UPDATES:
-```diff
-+ Complete code refactor for pollinations.__init__, 
-+      pollinations.abc, 
-+      pollinations.ai, 
-+      pollinations.ext, 
-+      and added pollinations.types
+(1) -> Fixed:
+```javascript
+flowa.Encoder.new(): // Fixed returning values
 ```
 
+(2) -> Added:
+```javascript
+flowa.types.Map():  // Moved Map(object) to flowa.types
+flowa.types.Node(): // Moved Node(object) to flowa.types
+```
+
+(3) -> Datasets:
+```
+flowa/datasets
+    /music_data.csv
+    /play_tennis.csv
+```
 ```python
-import pollinations.ai as ai
+from flowa import (
+    Dataset,
+    read_csv,
+    convert
+)
 
-model: ai.Text = ai.Text()
+dataset = Dataset.get_play_tennis()
 
-response: str = model.chat('What is the meaning of life?')
+csv = read_csv(convert(dataset))
 ```
-
-## Added
-```python
-pollinations.types
-
-pollinations.types.ImageModel
-pollinations.types.ImageObject
-
-pollinations.types.TextModel
-pollinations.types.TextObject
+```javascript
+// >>>     Outlook Temperature Humidity    Wind Play Tennis
+// >>> 0  Overcast        Mild   Normal    Weak         Yes
+// >>> 1     Sunny        Mild   Normal    Weak         Yes
+// >>> ...   [2 rows not shown]
 ```
-
-# Links
-- [Pollinations.ai](https://pollinations.ai/)
-- [Discord](https://discord.gg/8HqSRhJVxn)
-- [Github](https://github.com/pollinations)
-- [Youtube](https://www.youtube.com/channel/UCk4yKnLnYfyUmCCbDzOZOug)
-- [Instagram](https://instagram.com/pollinations_ai)
-- [Twitter (X)](https://twitter.com/pollinations_ai)
