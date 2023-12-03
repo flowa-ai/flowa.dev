@@ -1,70 +1,76 @@
-<div id="header">
-  <img src="https://i.ibb.co/p049Y5S/86964862.png" width="50"/>   <img src="https://i.ibb.co/r6JZ336/sketch1700556567238.png" width="250">
-</div>
+<a href="https://ibb.co/885w17s](https://i.ibb.co/bdBVcKm/flowa.jpg)"><img src="https://i.ibb.co/bdBVcKm/flowa.jpg" alt="flowa" border="0" width="145"></a>
 
-# [pollinations.ai - Image Generation](https://pypi.org/project/pollinations.ai)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/toolkitr/tkr/blob/main/LICENSE)
+# [flowa - Decision Trees & Label Encoding](https://pypi.org/project/flowa)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/flowa/flowa/blob/main/LICENSE)
 [![Python Versions](https://img.shields.io/badge/python-3.7%20|%203.8%20|%203.9%20|%203.10%20|%203.11%20|%203.12%20-blue)](https://www.python.org/downloads/)
 
 ```
-pollinations.ai: (https://pollinations.ai/)
+flowa: (V1.1.4)
 
-This is a WRAPPER designed for easy text-image generation.
+Python Machine Learning, Decision Trees, and Label Encoders.
 ```
 
 ## Installing
 ```shell
 # Linux/macOS
-python3 -m pip install -U pollinations.ai
+python3 pip install -U flowa
 
 # Windows
-py -3 -m pip install -U pollinations.ai
+py -3 -m pip install -U flowa
 ```
 
 # Simple Examples
 ```python
-import pollinations.ai as ai
+from flowa import (
+    Encoder,
+    Tree,
+    Dataset,
+    read_csv,
+    convert
+)
 
-prompt: str = 'A cat with a top hat and a mustache.'
-prompt_sample: str = ai.sample()
+classifier: Tree = Tree()
+encoder: Encoder = Encoder()
 
-image_generator: ai.Image = ai.Image(save_file='pollinations.ai.jpg') # OPTIONAL: takes save_file parameter
-image = image_generator.generate(prompt)
-image.save() # OPTIONAL: takes save_file parameter
+dataset: str = convert(Dataset.get_music_data())
+csv: object = read_csv(dataset)
+
+dataframe: object = encoder.df(csv, 'gender')
+
+X_matrix: object = dataframe.drop('genre', axis=1).values
+y_column: object = encoder(dataframe['genre'].values)
+
+classifier.fit(X_matrix, y_column)
+
+age, gender = encoder.new(30, 'female')
+fix: list = encoder.fix(age, gender)
+
+prediction: list[int] = classifier.predict(fix)
+print(encoder.inverse(prediction))
+
+#>>> ['Pop']
+
 ```
-Chatting with text generative ai model:
+String Dataset to dataframe conversion:
 ```python
-import pollinations.ai as ai
+from flowa import (
+    Dataset,
+    read_csv,
+    convert
+)
 
-model: ai.Text = ai.Text()
+dataset: Dataset = Dataset.get_play_tennis()
 
-response: str = model.chat(prompt='What is the meaning of life?')
-```
+converted_dataset: str = convert(dataset)
 
-Setting model filter:
-```python
-import pollinations.ai as ai
+csv: Dataset = read_csv(converted_dataset)
+print(csv)
 
-image_generator: ai.Image = ai.Image()
-image_generator.set_filter(ai.BANNED_WORDS)
-
-# If any word from a prompt is in the filter it will return an exception.
-```
-Batch sample and generation:
-```python
-import pollinations.ai as ai
-
-batch: list = ai.sample_batch(size=5)
-image_generator: ai.Image = ai.Image()
-image_generator.generate_batch(prompts=batch, save=True) # OPTIONAL: path  # OPTIONAL: naming = 'counter' | naming = 'prompt'
-
-# image_generator.generate_batch(prompts=batch, save=True, path='somefolder', naming='prompt')
+#>>>     Outlook Temperature Humidity    Wind Play Tennis
+#>>> 0  Overcast        Mild   Normal    Weak         Yes
+#>>> 1     Sunny        Mild   Normal    Weak         Yes
+#>>> ... [2 rows not shown]
 ```
 
 # Links
-- [Pollinations.ai](https://pollinations.ai/)
-- [Discord](https://discord.gg/8HqSRhJVxn)
-- [Github](https://github.com/pollinations)
-- [Youtube](https://www.youtube.com/channel/UCk4yKnLnYfyUmCCbDzOZOug)
-- [Instagram](https://instagram.com/pollinations_ai)
-- [Twitter (X)](https://twitter.com/pollinations_ai)
+- [Github](https://github.com/flowa)
